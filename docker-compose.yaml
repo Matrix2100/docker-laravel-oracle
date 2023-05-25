@@ -1,0 +1,20 @@
+version: '3'
+services:
+  php81_oci8_laravel:
+    container_name: php81_oci8_laravel
+    working_dir: /app
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - IMG=webdevops/php-apache-dev:8.1
+    volumes:
+      - ".:/app"
+    ports:
+      - "8080:80"
+      - "8443:443"
+      - "9000:9000"
+networks:
+  default:
+    external:
+      name: internal
